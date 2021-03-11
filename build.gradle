@@ -12,5 +12,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation group: 'info.cukes', name: 'cucumber-java8', version: '1.2.5'
+    testImplementation 'io.cucumber:cucumber-java8:6.8.1'
+    testImplementation 'io.cucumber:cucumber-junit:6.8.1'
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.3'
 }

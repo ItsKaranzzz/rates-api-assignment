@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="0.158">
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_2" time="0.018">
+<system-out><![CDATA[When foreign exchange rates api is available................................passed
+Then the exchange rates api response should be successful...................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_3" time="0.002">
+<system-out><![CDATA[When foreign exchange rates api is available................................passed
+Then the exchange rates api response should have ...........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_4" time="0.002">
+<system-out><![CDATA[When foreign exchange rates api is not correct..............................passed
+Then the exchange rates api response should not be successful...............passed
+]]></system-out>
+</testcase>
+</testsuite>

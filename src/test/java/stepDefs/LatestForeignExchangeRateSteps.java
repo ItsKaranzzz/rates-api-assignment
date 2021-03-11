@@ -1,6 +1,6 @@
 package stepDefs;
 
-import cucumber.api.java8.En;
+import io.cucumber.java8.En;
 
 public class LatestForeignExchangeRateSteps implements En {
     public LatestForeignExchangeRateSteps() {
