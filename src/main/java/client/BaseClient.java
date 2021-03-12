@@ -1,14 +1,40 @@
 package client;
 
 import constants.Constants;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import utils.Utils;
 
 import java.util.Properties;
+
+import static io.restassured.RestAssured.given;
 
 public class BaseClient {
 
     public String LATEST_EXCHANGE_RATES_HOST = getLatestExchangeRatesHost();
     public String PAST_EXCHANGE_RATES_HOST = getPastExchangeRatesHost();
+
+    public Response get(String uri) {
+        return given()
+                .contentType(ContentType.JSON)
+                .get(uri);
+    }
+
+    public Response get(String uri, Param queryParam) {
+        return given()
+                .contentType(ContentType.JSON)
+                .queryParam(queryParam.key, queryParam.value)
+                .get(uri);
+    }
+
+    public Response get(String uri, String pathParam) {
+        return given()
+                .contentType(ContentType.JSON)
+                .get(uri + "/" + pathParam);
+    }
 
 
     private String getLatestExchangeRatesHost() {
@@ -23,5 +49,11 @@ public class BaseClient {
         return Utils.getProperty(Constants.CONFIG_FILE_PATH);
     }
 
-
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static class Param {
+        String key;
+        String value;
+    }
 }
