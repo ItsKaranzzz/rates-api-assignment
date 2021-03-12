@@ -13,6 +13,7 @@ public class ExchangeRatesResponse extends BaseResponse {
     private String base;
     private Rates rates;
     private String date;
+    private String error;
 
     @Getter
     @Setter

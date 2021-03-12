@@ -3,7 +3,6 @@ package client;
 import constants.Constants;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import utils.Utils;
@@ -51,9 +50,13 @@ public class BaseClient {
 
     @Getter
     @Setter
-    @AllArgsConstructor
     public static class Param {
         String key;
         String value;
+
+        public Param(String symbol, String symbolValue) {
+            this.key = symbol;
+            this.value = symbolValue;
+        }
     }
 }

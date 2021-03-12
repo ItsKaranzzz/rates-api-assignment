@@ -21,6 +21,11 @@ public class LatestExchangeRatesClient extends BaseClient {
         return getResponse(response);
     }
 
+    public ExchangeRatesResponse getForeignExchangeRatesWithInvalidUri() {
+        Response response = get(LATEST_EXCHANGE_RATES_HOST + "/apii");
+        return getResponse(response);
+    }
+
     private ExchangeRatesResponse getResponse(Response response) {
         ExchangeRatesResponse exchangeRatesResponse = response.as(ExchangeRatesResponse.class);
         exchangeRatesResponse.setHttpStatusCode(response.getStatusCode());

@@ -8,7 +8,7 @@ Feature: Validate the rates apis for latest foreign exchange rates
 
   Scenario:
     When foreign exchange rates api is available
-    Then the exchange rates api response should have ...
+    Then the exchange rates api response should be expected for CZK symbol
 
   Scenario:
     When foreign exchange rates api is not correct
