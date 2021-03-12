@@ -1,7 +1,10 @@
 package endpoints.foreignExchangeRates;
 
 import client.BaseClient;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+
+import static constants.Constants.INVALID_LATEST_EXCHANGE_RATE_HOST;
 
 public class LatestExchangeRatesClient extends BaseClient {
 
@@ -22,7 +25,7 @@ public class LatestExchangeRatesClient extends BaseClient {
     }
 
     public ExchangeRatesResponse getForeignExchangeRatesWithInvalidUri() {
-        Response response = get(LATEST_EXCHANGE_RATES_HOST + "/apii");
+        Response response = get(INVALID_LATEST_EXCHANGE_RATE_HOST);
         return getResponse(response);
     }
 

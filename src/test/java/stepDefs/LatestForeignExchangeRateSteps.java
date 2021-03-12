@@ -16,23 +16,20 @@ public class LatestForeignExchangeRateSteps implements En {
             latestExchangeRatesClient = new LatestExchangeRatesClient();
         });
         Then("^the exchange rates api response should be successful$", () -> {
-            latestExchangeRatesClient = new LatestExchangeRatesClient();
             assertEquals(latestExchangeRatesClient.getLatestForeignExchangeRatesData().getHttpStatusCode(), 200, "Latest exchange rate api status was not successful");
         });
         When("^foreign exchange rates api is not correct$", () -> {
-            latestExchangeRatesClient = new LatestExchangeRatesClient();
-            exchangeRatesResponse = latestExchangeRatesClient.getForeignExchangeRatesWithInvalidUri();
+            exchangeRatesResponse = new LatestExchangeRatesClient().getForeignExchangeRatesWithInvalidUri();
         });
         Then("^the exchange rates api response should not be successful$", () -> {
             assertEquals(exchangeRatesResponse.getHttpStatusCode(), 404, "Api not found error code didn't matched!");
             assertEquals(exchangeRatesResponse.getError(), "Requested URL /api/latest/apii not found", "No error retrieved");
         });
         Then("^the exchange rates api response should be expected for (\\w+) symbol$", (String symbol) -> {
-            latestExchangeRatesClient = new LatestExchangeRatesClient();
-            ExchangeRatesResponse exchangeRatesResponse = latestExchangeRatesClient.getLatestForeignExchangeRatesBasedOnSymbol(symbol);
-            assertEquals(exchangeRatesResponse.getBase(), symbol, "base returned was not expected");
+            exchangeRatesResponse = new LatestExchangeRatesClient().getLatestForeignExchangeRatesBasedOnSymbol(symbol);
+            assertEquals(exchangeRatesResponse.base, "EUR", "base returned was not expected");
             Double expectedValue = TestUtils.getExpectedExchangeRate(symbol);
-            assertEquals(exchangeRatesResponse.getRates().getGBP(), expectedValue, "symbol " + symbol + "value returned was not expected");
+            assertEquals(exchangeRatesResponse.rates.CZK, expectedValue, "symbol " + symbol + " value returned was not " + expectedValue);
         });
     }
 }

@@ -1,25 +1,24 @@
 package utils;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
 
 public class TestUtils {
-    public static String getConstantValue(String constantKey) {
+    public static Double getConstantValue(String constantKey) {
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader(System.getProperty("user.dir") + "/src/test/java/utils/TestUtils"));
+            Object obj = parser.parse(new FileReader("src/test/resources/testData/ExchangeRates.json"));
 
             // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
             JSONObject jsonObject = (JSONObject) obj;
 
             // A JSON array. JSONObject supports java.util.List interface.
-            JSONArray constantValue = (JSONArray) jsonObject.get(constantKey);
 
-            return constantValue.toJSONString();
+            return (Double) jsonObject.get(constantKey);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,8 +27,7 @@ public class TestUtils {
     }
 
     public static Double getExpectedExchangeRate(String symbol) {
-        Double value = Double.valueOf(Objects.requireNonNull(getConstantValue(symbol)));
-        return value;
+        return requireNonNull(getConstantValue(symbol));
     }
 
 }

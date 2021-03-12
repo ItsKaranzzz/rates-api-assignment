@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="0.158">
-<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_2" time="0.018">
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="8.168">
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_2" time="4.92">
 <system-out><![CDATA[When foreign exchange rates api is available................................passed
 Then the exchange rates api response should be successful...................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_3" time="0.002">
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_3" time="0.528">
 <system-out><![CDATA[When foreign exchange rates api is available................................passed
-Then the exchange rates api response should have ...........................passed
+Then the exchange rates api response should be expected for CZK symbol......passed
 ]]></system-out>
 </testcase>
-<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_4" time="0.002">
-<system-out><![CDATA[When foreign exchange rates api is not correct..............................passed
-Then the exchange rates api response should not be successful...............passed
-]]></system-out>
+<testcase classname="Validate the rates apis for latest foreign exchange rates" name="_4" time="2.56">
+<failure message="Cannot parse object because no supported Content-Type was specified in response. Content-Type was 'text/plain; charset=utf-8'." type="java.lang.IllegalStateException"><![CDATA[When foreign exchange rates api is not correct..............................failed
+Then the exchange rates api response should not be successful...............skipped
+
+StackTrace:
+java.lang.IllegalStateException: Cannot parse object because no supported Content-Type was specified in response. Content-Type was 'text/plain; charset=utf-8'.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:80)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:105)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:237)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:249)
+	at io.restassured.internal.mapping.ObjectMapping.deserialize(ObjectMapping.groovy:94)
+	at io.restassured.internal.mapping.ObjectMapping$deserialize.call(Unknown Source)
+	at io.restassured.internal.RestAssuredResponseOptionsGroovyImpl.as(RestAssuredResponseOptionsGroovyImpl.groovy:226)
+	at io.restassured.internal.RestAssuredResponseOptionsImpl.as(RestAssuredResponseOptionsImpl.java:169)
+	at endpoints.foreignExchangeRates.LatestExchangeRatesClient.getResponse(LatestExchangeRatesClient.java:33)
+	at endpoints.foreignExchangeRates.LatestExchangeRatesClient.getForeignExchangeRatesWithInvalidUri(LatestExchangeRatesClient.java:29)
+	at stepDefs.LatestForeignExchangeRateSteps.lambda$new$2(LatestForeignExchangeRateSteps.java:22)
+	at ✽.foreign exchange rates api is not correct(file:///Users/itskaranzzz/Documents/Testvagrant/rates-api-assignment/src/test/resources/features/LatestForeignExchangeRate.feature:14)
+]]></failure>
 </testcase>
 </testsuite>
