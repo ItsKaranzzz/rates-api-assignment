@@ -12,7 +12,7 @@ public class LatestForeignExchangeRateSteps implements En {
     ExchangeRatesResponse exchangeRatesResponse;
 
     public LatestForeignExchangeRateSteps() {
-        When("^foreign exchange rates api is available$", () -> {
+        Given("^foreign exchange rates api is available$", () -> {
             latestExchangeRatesClient = new LatestExchangeRatesClient();
         });
         Then("^the exchange rates api response should be successful$", () -> {

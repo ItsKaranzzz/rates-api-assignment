@@ -29,13 +29,10 @@ configurations {
     }
 }
 
-task runUnitTests(type: Test) {
-    useTestNG() {
-        testLogging.showStandardStreams = true
-        includeGroups System.getProperty('tag', 'SMOKE')
-    }
-}
-
 task cucumberTests(type: Test) {
     include '**/TestRunner*'
+}
+
+test {
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
 }

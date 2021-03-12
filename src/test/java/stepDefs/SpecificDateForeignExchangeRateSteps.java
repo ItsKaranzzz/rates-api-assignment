@@ -13,7 +13,7 @@ public class SpecificDateForeignExchangeRateSteps implements En {
     ExchangeRatesResponse exchangeRatesResponse;
 
     public SpecificDateForeignExchangeRateSteps() {
-        When("^foreign exchange rates api for specific date is available$", () -> {
+        Given("^foreign exchange rates api for specific date is available$", () -> {
             specificDateExchangeRatesClient = new SpecificDateExchangeRatesClient();
         });
         Then("^the exchange rates api response for specific date should be successful$", () -> {

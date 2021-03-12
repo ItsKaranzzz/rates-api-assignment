@@ -10,7 +10,12 @@ Gradle should be installed in your system. If not, run brew install gradle to in
 # Execution
 
 ## Please run below command to execute the Unit tests
-gradle clean runUnitTests -Dtag=SMOKE
+./gradlew -Dcucumber.options="--tags @smoke" clean test
+./gradlew -Dcucumber.options="--tags @regression" clean test
 
 ## Please run below command to execute cucumber features
-gradle cucumberTests
+gradle cucumberTests or
+./gradlew cucumberTests
+
+## Cucumber Reports generation under project path on below location post execution
+/build/reports/tests/cucumberTests/index.html
