@@ -3,9 +3,9 @@ package stepDefs;
 import endpoints.foreignExchangeRates.ExchangeRatesResponse;
 import endpoints.foreignExchangeRates.LatestExchangeRatesClient;
 import io.cucumber.java8.En;
-import utils.TestUtils;
 
 import static org.testng.Assert.assertEquals;
+import static utils.GetExchangeRateData.getExpectedExchangeRate;
 
 public class LatestForeignExchangeRateSteps implements En {
     LatestExchangeRatesClient latestExchangeRatesClient;
@@ -28,7 +28,7 @@ public class LatestForeignExchangeRateSteps implements En {
         Then("^the exchange rates api response should be expected for (\\w+) symbol$", (String symbol) -> {
             exchangeRatesResponse = new LatestExchangeRatesClient().getLatestForeignExchangeRatesBasedOnSymbol(symbol);
             assertEquals(exchangeRatesResponse.base, "EUR", "base returned was not expected");
-            Double expectedValue = TestUtils.getExpectedExchangeRate(symbol);
+            Double expectedValue = getExpectedExchangeRate(symbol);
             assertEquals(exchangeRatesResponse.rates.CZK, expectedValue, "symbol " + symbol + " value returned was not " + expectedValue);
         });
     }

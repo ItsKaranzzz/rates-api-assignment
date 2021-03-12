@@ -1,12 +1,13 @@
 Feature: Validate the rates apis for foreign exchange rates on specific dates
 
-  Background:  When foreign exchange rates api is available
+  Background:
+    When foreign exchange rates api for specific date is available
 
   Scenario:
     Then the exchange rates api response for specific date should be successful
 
   Scenario:
-    Then the exchange rates api response on specific date should be expected for CZK symbol
+    Then the exchange rates api response on specific date should be expected for CAD symbol
 
   Scenario:
     When a future date is provided to the foreign exchange rates api

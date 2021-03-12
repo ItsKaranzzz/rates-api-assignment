@@ -5,8 +5,6 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 
-import static java.util.Objects.requireNonNull;
-
 public class TestUtils {
     public static Double getConstantValue(String constantKey) {
         JSONParser parser = new JSONParser();
@@ -20,9 +18,4 @@ public class TestUtils {
         }
         return null;
     }
-
-    public static Double getExpectedExchangeRate(String symbol) {
-        return requireNonNull(getConstantValue(symbol));
-    }
-
 }

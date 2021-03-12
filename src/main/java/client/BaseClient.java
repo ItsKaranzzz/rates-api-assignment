@@ -3,7 +3,6 @@ package client;
 import constants.Constants;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import lombok.Setter;
 import utils.Utils;
@@ -33,6 +32,13 @@ public class BaseClient {
     public Response get(String uri, String pathParam) {
         return given()
                 .contentType(ContentType.JSON)
+                .get(uri + "/" + pathParam);
+    }
+
+    public Response get(String uri, String pathParam, Param queryParam) {
+        return given()
+                .contentType(ContentType.JSON)
+                .queryParam(queryParam.key, queryParam.value)
                 .get(uri + "/" + pathParam);
     }
 
