@@ -12,12 +12,7 @@ public class TestUtils {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader("src/test/resources/testData/ExchangeRates.json"));
-
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
             JSONObject jsonObject = (JSONObject) obj;
-
-            // A JSON array. JSONObject supports java.util.List interface.
-
             return (Double) jsonObject.get(constantKey);
 
         } catch (Exception e) {

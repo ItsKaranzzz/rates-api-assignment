@@ -23,3 +23,19 @@ dependencies {
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.4'
 }
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task runUnitTests(type: Test) {
+    useTestNG() {
+        testLogging.showStandardStreams = true
+        includeGroups System.getProperty('tag', 'SMOKE')
+    }
+}
+
+task cucumberTests(type: Test) {
+    include '**/TestRunner*'
+}
