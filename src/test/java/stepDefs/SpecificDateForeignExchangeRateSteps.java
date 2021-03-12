@@ -25,7 +25,7 @@ public class SpecificDateForeignExchangeRateSteps implements En {
             assertEquals(exchangeRatesResponse.date, PAST_DATE, "Specific date returned was not matching as per the get request");
             assertEquals(exchangeRatesResponse.rates.CAD, getExpectedExchangeRate(symbol), "Symbol value for specific date FER didnt match");
         });
-        When("^a future date is provided to the foreign exchange rates api$", () -> {
+        When("^future date is provided to the foreign exchange rates service", () -> {
             exchangeRatesResponse = specificDateExchangeRatesClient.getSpecificForeignExchangeRatesData(FUTURE_DATE);
         });
         Then("^the exchange rates api response should have the data based on current date$", () -> {

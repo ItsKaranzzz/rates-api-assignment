@@ -1,7 +1,6 @@
 package endpoints.foreignExchangeRates;
 
 import client.BaseClient;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static constants.Constants.INVALID_LATEST_EXCHANGE_RATE_HOST;

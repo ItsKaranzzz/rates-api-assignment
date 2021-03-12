@@ -16,6 +16,18 @@ public class BaseClient {
     public String LATEST_EXCHANGE_RATES_HOST = getLatestExchangeRatesHost();
     public String PAST_EXCHANGE_RATES_HOST = getPastExchangeRatesHost();
 
+    private String getLatestExchangeRatesHost() {
+        return readProperties().getProperty("LATEST_FOREIGN_EXCHANGE_RATE");
+    }
+
+    private String getPastExchangeRatesHost() {
+        return readProperties().getProperty("SPECIFIC_DATE_EXCHANGE_RATE");
+    }
+
+    private Properties readProperties() {
+        return Utils.getProperty(Constants.CONFIG_FILE_PATH);
+    }
+
     public Response get(String uri) {
         return given()
                 .contentType(ContentType.JSON)
@@ -40,19 +52,6 @@ public class BaseClient {
                 .contentType(ContentType.JSON)
                 .queryParam(queryParam.key, queryParam.value)
                 .get(uri + "/" + pathParam);
-    }
-
-
-    private String getLatestExchangeRatesHost() {
-        return readProperties().getProperty("LATEST_FOREIGN_EXCHANGE_RATE");
-    }
-
-    private String getPastExchangeRatesHost() {
-        return readProperties().getProperty("SPECIFIC_DATE_EXCHANGE_RATE");
-    }
-
-    private Properties readProperties() {
-        return Utils.getProperty(Constants.CONFIG_FILE_PATH);
     }
 
     @Getter

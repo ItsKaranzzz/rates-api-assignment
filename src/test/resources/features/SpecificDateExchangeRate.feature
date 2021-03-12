@@ -10,6 +10,5 @@ Feature: Validate the rates apis for foreign exchange rates on specific dates
     Then the exchange rates api response on specific date should be expected for CAD symbol
 
   Scenario:
-    When a future date is provided to the foreign exchange rates api
+    When future date is provided to the foreign exchange rates service
     Then the exchange rates api response should have the data based on current date
-
