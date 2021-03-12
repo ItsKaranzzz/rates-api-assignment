@@ -5,7 +5,7 @@ Feature: Validate the rates apis for latest foreign exchange rates
 
   @smoke
   Scenario: Verify successful retrieval of latest exchange rate service
-    Then the exchange rates api response should be successful
+    Then the latest foreign exchange rates service response should be successful
 
   @smoke
   Scenario: Verify exchange rate retrieved for CZK symbol

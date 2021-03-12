@@ -4,6 +4,8 @@ import endpoints.foreignExchangeRates.ExchangeRatesResponse;
 import endpoints.foreignExchangeRates.LatestExchangeRatesClient;
 import io.cucumber.java8.En;
 
+import static constants.StatusCodes.NOT_FOUND_STATUS_CODE;
+import static constants.StatusCodes.SUCCESS_CODE;
 import static org.testng.Assert.assertEquals;
 import static utils.GetExchangeRateData.getExpectedExchangeRate;
 
@@ -15,14 +17,15 @@ public class LatestForeignExchangeRateSteps implements En {
         Given("^foreign exchange rates api is available$", () -> {
             latestExchangeRatesClient = new LatestExchangeRatesClient();
         });
-        Then("^the exchange rates api response should be successful$", () -> {
-            assertEquals(latestExchangeRatesClient.getLatestForeignExchangeRatesData().getHttpStatusCode(), 200, "Latest exchange rate api status was not successful");
+        Then("^the latest foreign exchange rates service response should be successful$", () -> {
+            exchangeRatesResponse = latestExchangeRatesClient.getLatestForeignExchangeRatesData();
+            assertEquals(exchangeRatesResponse.getHttpStatusCode(), SUCCESS_CODE, "Latest exchange rate api status was not successful");
         });
         When("^foreign exchange rates api is not correct$", () -> {
             exchangeRatesResponse = new LatestExchangeRatesClient().getForeignExchangeRatesWithInvalidUri();
         });
         Then("^the exchange rates api response should not be successful$", () -> {
-            assertEquals(exchangeRatesResponse.getHttpStatusCode(), 404, "Api not found error code didn't matched!");
+            assertEquals(exchangeRatesResponse.getHttpStatusCode(), NOT_FOUND_STATUS_CODE, "Api not found error code didn't matched!");
             assertEquals(exchangeRatesResponse.getError(), "Requested URL /api/latest/apii not found", "No error retrieved");
         });
         Then("^the exchange rates api response should be expected for (\\w+) symbol$", (String symbol) -> {
